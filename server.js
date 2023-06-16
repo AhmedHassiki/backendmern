@@ -3,7 +3,7 @@ const Products = require('./routes/product')
 const User = require('./routes/userRoute')
 const Cart = require('./routes/cartRoute')
 const Order = require("./routes/orderRoute");
-// const cors = require("cors");
+const cors = require("cors");
 
 
 const app = express();
@@ -14,6 +14,8 @@ connectDB();
 // const corsOptions = {
 //     origin: "https://authentikey.onrender.com/", // frontend URI (ReactJS)
 // }
+app.use(cors())
+
 app.use(express.json());
 // app.use(cors(corsOptions));
 app.use('/api/product', Products);
