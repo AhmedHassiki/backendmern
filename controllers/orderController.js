@@ -95,7 +95,7 @@ exports.getOrders = async (req, res) => {
       const orders = await Order.find({}).populate('user').populate({path: 'products', populate: {path: 'product'}});
       res.status(200).json({ message: 'Commandes récupérées avec succès', response: orders });
     }else{
-      const orders = await Order.find({ user : userID}).populate('products');
+      const orders = await Order.find({ user : userID}).populate({path: 'products', populate: {path: 'product'}});
       res.status(200).json({ message: 'Commandes récupérées avec succès', response: orders });
     }
     // Récupérer toutes les commandes de l'utilisateur
